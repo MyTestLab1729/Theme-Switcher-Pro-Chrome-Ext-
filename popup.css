@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 400px;
+    background: #f8f9fa;
+    color: #2d3436;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.container {
+    padding: 16px;
+}
+
+h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2d3436;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    background: #f8f9fa;
+    padding: 8px 0;
+    z-index: 1;
+}
+
+h2 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: #636e72;
+    position: sticky;
+    top: 48px;
+    background: #f8f9fa;
+    padding: 8px 0;
+    z-index: 1;
+}
+
+.theme-section {
+    margin-bottom: 24px;
+}
+
+.theme-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.theme-card {
+    background: white;
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid transparent;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.theme-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.theme-card.active {
+    border-color: #0984e3;
+}
+
+.theme-preview {
+    width: 100%;
+    height: 45px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    border: 1px solid #dfe6e9;
+    transition: transform 0.2s ease;
+}
+
+.theme-card:hover .theme-preview {
+    transform: scale(1.05);
+}
+
+.theme-card span {
+    font-size: 11px;
+    color: #2d3436;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #dfe6e9;
+    position: sticky;
+    bottom: 0;
+    background: #f8f9fa;
+    padding-bottom: 8px;
+}
+
+#resetTheme {
+    background: #0984e3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#resetTheme:hover {
+    background: #0773c5;
+    transform: translateY(-1px);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} 

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Theme Switcher Icon Generator</title>
+    <style>
+        .icon-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        .icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+        .download-btn {
+            padding: 8px 16px;
+            background: #0984e3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+        .download-btn:hover {
+            background: #0773c5;
+            transform: translateY(-1px);
+        }
+        .preview {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="icon-container">
+        <div class="icon">
+            <canvas id="icon16" width="16" height="16"></canvas>
+            <button class="download-btn" onclick="downloadIcon(16)">Download 16x16</button>
+        </div>
+        <div class="icon">
+            <canvas id="icon48" width="48" height="48"></canvas>
+            <button class="download-btn" onclick="downloadIcon(48)">Download 48x48</button>
+        </div>
+        <div class="icon">
+            <canvas id="icon128" width="128" height="128"></canvas>
+            <button class="download-btn" onclick="downloadIcon(128)">Download 128x128</button>
+        </div>
+    </div>
+
+    <script>
+        function drawIcon(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Create gradient
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#0984e3');
+            gradient.addColorStop(1, '#00b894');
+            
+            // Draw background circle with gradient
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 2, 0, Math.PI * 2);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Draw inner circle
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/3, 0, Math.PI * 2);
+            ctx.fillStyle = '#ffffff';
+            ctx.fill();
+            
+            // Draw crescent moon
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/3, 0, Math.PI * 2);
+            ctx.arc(size/2 - size/6, size/2, size/3, 0, Math.PI * 2, true);
+            ctx.fillStyle = gradient;
+            ctx.fill();
+            
+            // Add shine effect
+            const shineGradient = ctx.createRadialGradient(
+                size/4, size/4, 0,
+                size/4, size/4, size/4
+            );
+            shineGradient.addColorStop(0, 'rgba(255, 255, 255, 0.3)');
+            shineGradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+            
+            ctx.beginPath();
+            ctx.arc(size/4, size/4, size/4, 0, Math.PI * 2);
+            ctx.fillStyle = shineGradient;
+            ctx.fill();
+            
+            // Add subtle border
+            ctx.beginPath();
+            ctx.arc(size/2, size/2, size/2 - 2, 0, Math.PI * 2);
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        function downloadIcon(size) {
+            const canvas = document.getElementById(`icon${size}`);
+            const link = document.createElement('a');
+            link.download = `icon${size}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Draw icons on load
+        window.onload = function() {
+            drawIcon(document.getElementById('icon16'));
+            drawIcon(document.getElementById('icon48'));
+            drawIcon(document.getElementById('icon128'));
+        };
+    </script>
+</body>
+</html> 
