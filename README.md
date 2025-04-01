@@ -161,7 +161,7 @@ If you encounter any issues or have suggestions for improvement, please:
 
 ## Credits
 
-Created with ❤️ by [Your Name]
+Created with ❤️ by @atrajit-sarkar
 
 ---
 
